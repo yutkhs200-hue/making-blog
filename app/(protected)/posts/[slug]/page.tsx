@@ -21,7 +21,7 @@ export default async function PostPage({
   return (
     <article className="space-y-6">
       <div className="space-y-3">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <h1 className="text-2xl font-bold leading-snug">{post.title}</h1>
           <div className="flex items-center gap-2 shrink-0">
             <Link
