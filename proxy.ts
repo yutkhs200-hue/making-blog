@@ -1,16 +1,21 @@
-import { auth } from "@/lib/auth"
+import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
 
-export default auth((req) => {
-  const isLoggedIn = !!req.auth
-  const isLoginPage = req.nextUrl.pathname === "/login"
+export function proxy(request: NextRequest) {
+  const sessionToken =
+    request.cookies.get("authjs.session-token") ||
+    request.cookies.get("__Secure-authjs.session-token")
+
+  const isLoggedIn = !!sessionToken
+  const isLoginPage = request.nextUrl.pathname === "/login"
 
   if (!isLoggedIn && !isLoginPage) {
-    return Response.redirect(new URL("/login", req.url))
+    return NextResponse.redirect(new URL("/login", request.url))
   }
   if (isLoggedIn && isLoginPage) {
-    return Response.redirect(new URL("/", req.url))
+    return NextResponse.redirect(new URL("/", request.url))
   }
-})
+}
 
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
