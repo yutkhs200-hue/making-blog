@@ -41,7 +41,7 @@ export function DeleteDialog({ slug, sha }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <span className="inline-flex items-center text-sm px-3 py-1.5 rounded-md bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-colors cursor-pointer">
+        <span className="inline-flex items-center text-sm px-3 py-1.5 rounded-md border border-input hover:bg-accent hover:text-accent-foreground transition-colors cursor-pointer">
           削除
         </span>
       </DialogTrigger>
