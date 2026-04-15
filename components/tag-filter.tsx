@@ -1,6 +1,6 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
+import { cn } from "@/lib/utils"
 
 type Props = {
   tags: string[]
@@ -12,23 +12,29 @@ export function TagFilter({ tags, selected, onSelect }: Props) {
   if (tags.length === 0) return null
 
   return (
-    <div className="flex flex-wrap gap-2">
-      <Badge
-        variant={selected === null ? "default" : "outline"}
-        className="cursor-pointer"
+    <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-[12px] font-mono">
+      <button
+        type="button"
         onClick={() => onSelect(null)}
+        className={cn(
+          "transition-colors hover:text-foreground",
+          selected === null ? "text-primary" : "text-muted-foreground",
+        )}
       >
-        すべて
-      </Badge>
+        all
+      </button>
       {tags.map((tag) => (
-        <Badge
+        <button
           key={tag}
-          variant={selected === tag ? "default" : "outline"}
-          className="cursor-pointer"
+          type="button"
           onClick={() => onSelect(selected === tag ? null : tag)}
+          className={cn(
+            "transition-colors hover:text-foreground",
+            selected === tag ? "text-primary" : "text-muted-foreground",
+          )}
         >
-          {tag}
-        </Badge>
+          #{tag}
+        </button>
       ))}
     </div>
   )

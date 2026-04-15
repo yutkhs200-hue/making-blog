@@ -9,38 +9,42 @@ export function Header() {
   const { resolvedTheme, setTheme } = useTheme()
 
   return (
-    <header className="border-b bg-background sticky top-0 z-10">
-      <div className="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="font-bold text-lg tracking-tight shrink-0">
-          Microblog
+    <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-md border-b border-border/60">
+      <div className="max-w-2xl mx-auto px-6 h-14 flex items-center justify-between">
+        <Link
+          href="/"
+          className="font-semibold text-[15px] tracking-tight shrink-0 hover:text-primary transition-colors"
+        >
+          microblog
         </Link>
-        <div className="flex items-center gap-1">
+        <nav className="flex items-center gap-0.5 text-muted-foreground">
           <Link
             href="/posts/new"
-            className="inline-flex items-center gap-1 text-sm px-2 sm:px-3 py-1.5 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+            className="inline-flex items-center gap-1.5 text-[13px] px-2.5 sm:px-3 py-1.5 rounded-md hover:bg-accent hover:text-foreground transition-colors"
           >
-            <PenLine className="h-4 w-4 shrink-0" />
-            <span className="hidden sm:inline">新規作成</span>
+            <PenLine className="h-3.5 w-3.5 shrink-0" />
+            <span className="hidden sm:inline">新規</span>
           </Link>
           <button
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="inline-flex items-center justify-center p-1.5 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
-            aria-label="ダークモード切り替え"
+            className="inline-flex items-center justify-center p-2 rounded-md hover:bg-accent hover:text-foreground transition-colors"
+            aria-label="テーマ切り替え"
           >
             {resolvedTheme === "dark" ? (
-              <Sun className="h-4 w-4" />
+              <Sun className="h-3.5 w-3.5" />
             ) : (
-              <Moon className="h-4 w-4" />
+              <Moon className="h-3.5 w-3.5" />
             )}
           </button>
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="inline-flex items-center gap-1 text-sm px-2 sm:px-3 py-1.5 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+            className="inline-flex items-center gap-1.5 text-[13px] px-2.5 sm:px-3 py-1.5 rounded-md hover:bg-accent hover:text-foreground transition-colors"
+            aria-label="ログアウト"
           >
-            <LogOut className="h-4 w-4 shrink-0" />
+            <LogOut className="h-3.5 w-3.5 shrink-0" />
             <span className="hidden sm:inline">ログアウト</span>
           </button>
-        </div>
+        </nav>
       </div>
     </header>
   )

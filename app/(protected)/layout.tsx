@@ -13,7 +13,7 @@ export default async function ProtectedLayout({
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-8">{children}</main>
+      <main className="max-w-2xl mx-auto px-6 py-12 sm:py-16">{children}</main>
     </div>
   )
 }

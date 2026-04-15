@@ -39,8 +39,11 @@ export default function NewPostPage() {
   }
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-xl font-bold">新規記事</h1>
+    <div className="space-y-8">
+      <header className="space-y-1">
+        <h1 className="text-2xl font-semibold tracking-tight">新規記事</h1>
+        <p className="text-sm text-muted-foreground">Markdownで記事を作成します</p>
+      </header>
       <PostEditor onSave={handleSave} saving={saving} />
     </div>
   )
